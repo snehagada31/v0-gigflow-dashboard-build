@@ -1,35 +1,47 @@
-# v0-gigflow-dashboard-build
+# GigFlow – Smart Leads Dashboard
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+GigFlow is a full-stack lead management dashboard built for tracking, organizing, and managing sales leads efficiently.
 
-## Built with v0
+## Live Demo
+https://v0-gigflow-dashboard-build-git-main-snehagada31-8702s-projects.vercel.app/
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## GitHub Repository
+https://github.com/snehagada31/v0-gigflow-dashboard-build
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_xTGaOkaYh4ZLLOAaqCUzVqytLc8Y)
+## Features
+- User Registration & Login (Authentication)
+- Dashboard Overview
+- Lead Management
+- Lead Status Tracking
+- Analytics Cards
+- Responsive UI
 
-## Getting Started
+## Tech Stack
 
-First, run the development server:
+### Frontend
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
-```bash
+### Backend
+- Node.js
+- Express.js
+- TypeScript
+
+### Database
+- MongoDB Atlas
+
+## Setup Instructions
+
+### Frontend
+### backend
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open https://v0.app/chat/gigflow-dashboard-build-rzgSYJPEOmH. with your browser to see the result.
+Environment Variables
+Create a .env file inside backend:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
-
-<a href="https://v0.app/chat/api/kiro/clone/snehagada31/v0-gigflow-dashboard-build" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
