@@ -1,8 +1,7 @@
 "use client"
 
-import { createContext, useContext, useState, ReactNode } from "react"
-import { Lead, LeadStatus, LeadSource } from "./types"
-import { mockLeads } from "./mock-data"
+import { createContext, useContext, useState, ReactNode, useEffect } from "react"
+import { Lead } from "./types"
 
 interface LeadsContextType {
   leads: Lead[]
@@ -14,7 +13,17 @@ interface LeadsContextType {
 const LeadsContext = createContext<LeadsContextType | undefined>(undefined)
 
 export function LeadsProvider({ children }: { children: ReactNode }) {
-  const [leads, setLeads] = useState<Lead[]>(mockLeads)
+  const [leads, setLeads] = useState<Lead[]>([])
+
+  // FETCH LEADS FROM BACKEND
+  useEffect(() => {
+    fetch("http://localhost:5000/leads")
+      .then((res) => res.json())
+      .then((data) => {
+        setLeads(data)
+      })
+      .catch((err) => console.log(err))
+  }, [])
 
   const addLead = (lead: Omit<Lead, "id" | "createdAt" | "updatedAt">) => {
     const newLead: Lead = {
@@ -29,7 +38,9 @@ export function LeadsProvider({ children }: { children: ReactNode }) {
   const updateLead = (id: string, updates: Partial<Lead>) => {
     setLeads((prev) =>
       prev.map((lead) =>
-        lead.id === id ? { ...lead, ...updates, updatedAt: new Date() } : lead
+        lead.id === id
+          ? { ...lead, ...updates, updatedAt: new Date() }
+          : lead
       )
     )
   }
@@ -47,7 +58,7 @@ export function LeadsProvider({ children }: { children: ReactNode }) {
 
 export function useLeads() {
   const context = useContext(LeadsContext)
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useLeads must be used within a LeadsProvider")
   }
   return context
